@@ -29,8 +29,8 @@ public class Country {
   @Column(unique = true,nullable = false)
   private Long id;
 
-  @Column(name = "NAME")
-  private String name;
+  @Column(name = "COUNTRY")
+  private String country;
 
   @Column(name = "CITY")
   private String city;

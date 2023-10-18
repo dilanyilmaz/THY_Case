@@ -5,5 +5,5 @@ import com.thy.airport.dto.core.ResponsePayload;
 import java.util.List;
 
 public interface CountryService {
-
+  ResponsePayload<List<CountryDTO>> list();
 }

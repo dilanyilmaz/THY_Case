@@ -15,6 +15,7 @@ public class AirportDtoMapper {
   public AirportDTO map(Airport airport){
     return AirportDTO.builder()
         .id(airport.getId())
+        .code(airport.getCode())
         .name(airport.getName())
         .build();
   }

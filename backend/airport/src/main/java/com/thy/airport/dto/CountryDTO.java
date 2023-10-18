@@ -22,7 +22,7 @@ import lombok.ToString;
 public class CountryDTO {
 
   private Long id;
-  private String name;
+  private String country;
   private String city;
   private AirportDTO airportDTO;
 
@@ -30,7 +30,7 @@ public class CountryDTO {
     Country country = new Country();
     country.setId(countryDTO.getId());
     country.setCity(countryDTO.getCity());
-    country.setName(countryDTO.getName());
+    country.setCountry(countryDTO.getCountry());
     country.setAirport(countryDTO.getAirportDTO()!=null ? new AirportDtoMapper().convertToEntity(countryDTO.getAirportDTO()) :null);
     return country;
   }
