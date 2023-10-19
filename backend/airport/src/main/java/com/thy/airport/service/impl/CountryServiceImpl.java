@@ -2,6 +2,7 @@ package com.thy.airport.service.impl;
 
 import com.thy.airport.bean.country.ListCountryBean;
 import com.thy.airport.dto.CountryDTO;
+import com.thy.airport.dto.PredictiveInfos.Airports;
 import com.thy.airport.dto.core.ResponsePayload;
 import com.thy.airport.service.CountryService;
 import java.util.List;
@@ -17,4 +18,5 @@ public class CountryServiceImpl implements CountryService {
   public ResponsePayload<List<CountryDTO>> list() {
     return listCountryBean.list();
   }
+
 }

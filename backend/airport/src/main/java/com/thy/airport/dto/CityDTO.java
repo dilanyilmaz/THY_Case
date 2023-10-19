@@ -1,6 +1,7 @@
 package com.thy.airport.dto;
 
 import com.thy.airport.entity.Airport;
+import com.thy.airport.entity.City;
 import com.thy.airport.entity.Country;
 import com.thy.airport.mapper.AirportDtoMapper;
 import com.thy.airport.mapper.CityDtoMapper;
@@ -20,17 +21,16 @@ import lombok.ToString;
 @ToString
 @Getter
 @Setter
-public class CountryDTO {
+public class CityDTO {
 
   private Long id;
-  private String country;
-
-
-
-  public Country convertToEntity(CountryDTO countryDTO){
-    Country country = new Country();
-    country.setId(countryDTO.getId());
-    country.setName(countryDTO.getCountry());
-    return country;
+  private String city;
+  private CountryDTO country;
+  public City convertToEntity(CityDTO cityDTO) {
+    City city = new City();
+    city.setId(cityDTO.getId());
+    city.setName(cityDTO.getCity());
+    city.setCountry(cityDTO.getCountry()!=null?new CountryDtoMapper().convertToEntity(cityDTO.getCountry()):null);
+    return city;
   }
 }

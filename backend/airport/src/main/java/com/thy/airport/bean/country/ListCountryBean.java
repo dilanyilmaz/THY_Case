@@ -1,6 +1,7 @@
 package com.thy.airport.bean.country;
 
 import com.thy.airport.dto.CountryDTO;
+import com.thy.airport.dto.PredictiveInfos.Airports;
 import com.thy.airport.dto.core.AbstractResponsePayload;
 import com.thy.airport.dto.core.ResponsePayload;
 import com.thy.airport.entity.Airport;
@@ -21,4 +22,5 @@ public class ListCountryBean extends AbstractResponsePayload {
     public ResponsePayload<List<CountryDTO>> list(){
       return setResponse(mapper.mapList((List<Country>) repo.findAll()));
     }
+
 }

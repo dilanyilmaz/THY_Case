@@ -1,6 +1,8 @@
 package com.thy.airport.mapper;
 
 import com.thy.airport.dto.AirportDTO;
+import com.thy.airport.dto.CityDTO;
+import com.thy.airport.dto.PredictiveInfos.Airports;
 import com.thy.airport.entity.Airport;
 import com.thy.airport.entity.Country;
 import java.util.ArrayList;
@@ -17,6 +19,8 @@ public class AirportDtoMapper {
         .id(airport.getId())
         .code(airport.getCode())
         .name(airport.getName())
+        .city(airport.getCity()==null?null:new CityDtoMapper().map(airport.getCity()))
+        // .country(city.getCountry()==null ? null : new CountryDtoMapper().map(city.getCountry()))
         .build();
   }
   public List<AirportDTO> mapList(List<Airport> list) {

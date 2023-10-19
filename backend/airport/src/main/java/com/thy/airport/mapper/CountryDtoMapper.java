@@ -2,6 +2,7 @@ package com.thy.airport.mapper;
 
 import com.thy.airport.dto.AirportDTO;
 import com.thy.airport.dto.CountryDTO;
+import com.thy.airport.dto.PredictiveInfos.Airports;
 import com.thy.airport.entity.Airport;
 import com.thy.airport.entity.Country;
 import java.util.ArrayList;
@@ -16,9 +17,7 @@ public class CountryDtoMapper {
   public CountryDTO map(Country country){
     return CountryDTO.builder()
         .id(country.getId())
-        .city(country.getCity())
-        .country(country.getCountry())
-        .airportDTO(country.getAirport()== null ? null : new AirportDtoMapper().map(country.getAirport()))
+        .country(country.getName())
         .build();
   }
   public List<CountryDTO> mapList(List<Country> list) {
@@ -28,4 +27,5 @@ public class CountryDtoMapper {
     }
     return mappedList;
   }
+
 }
