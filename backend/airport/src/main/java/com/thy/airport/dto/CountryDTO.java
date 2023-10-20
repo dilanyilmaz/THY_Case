@@ -22,7 +22,7 @@ import lombok.ToString;
 @Setter
 public class CountryDTO {
 
-  private Long id;
+  private int id;
   private String country;
 
 

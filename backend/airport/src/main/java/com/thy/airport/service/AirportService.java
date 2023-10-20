@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface AirportService {
   ResponsePayload<List<AirportDTO>> list();
-  ResponsePayload<List<Airports>> listA(Long id);
+  ResponsePayload<List<Airports>> listA(int id);
 }

@@ -30,7 +30,7 @@ public class City {
   @SequenceGenerator(name = "CITY_ID_GENERATOR", sequenceName = "CITY_ID_GEN", allocationSize = 1)
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CITY_ID_GENERATOR")
   @Column(unique = true,nullable = false)
-  private Long id;
+  private int id;
 
   @Column(name = "NAME")
   private String name;

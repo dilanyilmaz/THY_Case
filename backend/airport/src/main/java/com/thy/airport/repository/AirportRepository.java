@@ -20,5 +20,5 @@ public interface AirportRepository extends CrudRepository<Airport,Long> {
           + "INNER JOIN CITY ON COUNTRY.ID = CITY.COUNTRY_ID\n"
           + "INNER JOIN AIRPORT ON CITY.ID=AIRPORT.CITY_ID\n"
           + "WHERE COUNTRY.ID=:countryId")
- List<Airports> getAirportsByCountry(@Param("countryId") Long countryId);
+ List<Airports> getAirportsByCountry(@Param("countryId") int countryId);
 }

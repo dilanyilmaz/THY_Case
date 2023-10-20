@@ -23,7 +23,7 @@ public class ListAirportBean extends AbstractResponsePayload {
     return setResponse(mapper.mapList((List<Airport>) repo.findAll()));
   }
 
-  public ResponsePayload<List<Airports>> listbyCounty(Long id) {
+  public ResponsePayload<List<Airports>> listbyCounty(int id) {
     List<Airports> airportsByCountry = repo.getAirportsByCountry(id);
     return setResponse(airportsByCountry);
   }

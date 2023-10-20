@@ -11,12 +11,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/airport")
+@CrossOrigin(origins = "*",allowedHeaders = "*", maxAge = 3600)
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class AirportController {
   private final AirportService airportService;
@@ -27,7 +29,7 @@ public class AirportController {
   }
 
   @GetMapping(value = "/listAirportsByCountry")
-  public ResponsePayload<List<Airports>> listAirportsByCountry(@RequestParam("id") Long id){
+  public ResponsePayload<List<Airports>> listAirportsByCountry(@RequestParam(value = "id") int id){
     return airportService.listA(id);
   }
 }

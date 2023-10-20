@@ -1,0 +1,10 @@
+
+U
+java:S1128"8Remove this unused import 'javax.persistence.FetchType'.(‡¯¿8Ãˆ“¸´1
+V
+java:S1128	"9Remove this unused import 'javax.persistence.JoinColumn'.(´Å¼á8Åˆ“¸´1
+Z
+java:S1128
+"8Remove this unused import 'javax.persistence.ManyToOne'.(ÇÑ²øÿÿÿÿ8Åˆ“¸´1
+T
+java:S1128"8Remove this unused import 'javax.persistence.OneToMany'.(«õù;8Æˆ“¸´1

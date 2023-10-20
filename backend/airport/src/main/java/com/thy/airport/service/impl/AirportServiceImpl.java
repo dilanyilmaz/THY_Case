@@ -21,7 +21,7 @@ public class AirportServiceImpl implements AirportService {
   }
 
   @Override
-  public ResponsePayload<List<Airports>> listA(Long id) {
+  public ResponsePayload<List<Airports>> listA(int id) {
     ResponsePayload<List<Airports>> listResponsePayload = listAirportBean.listbyCounty(id);
     return listResponsePayload;
   }

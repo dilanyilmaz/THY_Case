@@ -23,7 +23,7 @@ import lombok.ToString;
 @Setter
 public class CityDTO {
 
-  private Long id;
+  private int id;
   private String city;
   private CountryDTO country;
   public City convertToEntity(CityDTO cityDTO) {
