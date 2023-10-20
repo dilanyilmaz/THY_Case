@@ -61,9 +61,8 @@ const MyComponent: React.FC = () => {
                 </select>
 
             <select onChange={handleCityChange} value={selectedCity} 
-                className="border font-bold text-gray-600 bg-white px-10 py-2 "
-                >
-                    <FaPlayCircle />
+                className="border font-bold text-gray-600 bg-white px-10 py-2 ">
+                   <MdFlightTakeoff className="w-5 h-5 mr-2" />
                     <option value="">Nereye</option>
                 {cities.map((city) => (
                     <option key={city.id} value={city.id}>
