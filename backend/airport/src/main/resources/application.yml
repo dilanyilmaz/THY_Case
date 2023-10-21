@@ -1,0 +1,6 @@
+keycloak:
+  realm: thy
+  auth-server-url: http://localhost:8080
+  resource: thy-keycloak
+  public-client: true
+  bearer-only: true
