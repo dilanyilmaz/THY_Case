@@ -2,26 +2,60 @@ import React, { useState, useEffect } from 'react';
 import { FaPlayCircle, FaCalendar ,FaAngleRight} from 'react-icons/fa';
 import { MdOutlineMan2,MdFlightTakeoff,MdFlightLand ,MdCalendarMonth} from "react-icons/md";
 import axios from 'axios';
+import querystring from 'querystring';
 
 const MyComponent: React.FC = () => {
   const [cities, setCities] = useState<any[]>([]);
   const [selectedCity, setSelectedCity] = useState<string>('');
   const [airports, setAirports] = useState<any[]>([]);
+  const [accessToken, setAccessToken] = useState(null);
 
-
-
-  // Şehir verilerini almak için GET isteği yapar.
   useEffect(() => {
-    axios.get('http://localhost:8080/city/list')
+    const tokenRequestData = {
+      grant_type: 'password',
+      client_id: 'thy-keycloak',
+      username: 'thy-backend',
+      password: 'thy1234',
+      scope: 'openid',
+    };
+
+    // Axios ile POST isteği oluşturarak token alma işlemini gerçekleştirin
+    axios
+      .post('http://localhost:8080/realms/thy/protocol/openid-connect/token', null, {
+        params: tokenRequestData,
+        auth: {
+          username: 'thy-backend',
+          password: 'thy1234',
+        },
+      })
       .then((response) => {
-        setCities(response.data.data);
+        const newAccessToken = response.data.access_token;
+        setAccessToken(newAccessToken);
       })
       .catch((error) => {
-        console.error('Hata:', error);
+        console.error('Token alma hatası:', error);
       });
   }, []);
 
-  // Seçilen şehir değiştikçe havaalanı verilerini almak için GET isteği yapar.
+ useEffect(() => {
+    if (accessToken) {
+      axios
+        .get('http://localhost:9090/api/airport/listAirports', {
+          headers: {
+            'Authorization': `Bearer ${accessToken}`,
+          },
+        })
+        .then((response) => {
+          setCities(response.data.data);
+        })
+        .catch((error) => {
+          console.error('API isteği hatası:', error);
+        });
+    }
+  }, [accessToken]);
+
+
+
   useEffect(() => {
     if (selectedCity) {
       axios.get(`http://localhost:8080/airport/listAirportsByCountry?id=${selectedCity}`)

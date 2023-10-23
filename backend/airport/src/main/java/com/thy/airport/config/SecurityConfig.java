@@ -13,6 +13,10 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.authority.mapping.SimpleAuthorityMapper;
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.authentication.session.RegisterSessionAuthenticationStrategy;
 import org.springframework.security.web.authentication.session.SessionAuthenticationStrategy;
 
@@ -21,9 +25,7 @@ import org.springframework.security.web.authentication.session.SessionAuthentica
 @Import(KeycloakSpringBootConfigResolver.class)
 public class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter
 {
-  /**
-   * Registers the KeycloakAuthenticationProvider with the authentication manager.
-   */
+
   @Autowired
   public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
     KeycloakAuthenticationProvider authenticationProvider = new KeycloakAuthenticationProvider();
@@ -31,20 +33,21 @@ public class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter
     auth.authenticationProvider(authenticationProvider);
   }
 
-  /**
-   * Defines the session authentication strategy.
-   */
   @Bean
   @Override
   protected SessionAuthenticationStrategy sessionAuthenticationStrategy() {
     return new RegisterSessionAuthenticationStrategy(new SessionRegistryImpl());
   }
-
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     super.configure(http);
     http
         .authorizeRequests()
+        .antMatchers("/h2-console/**").permitAll()
+        .antMatchers("/api/**").permitAll()
         .anyRequest().permitAll();
+    http.csrf().ignoringAntMatchers("/h2-console/**");
+    http.headers().frameOptions().disable();
+
   }
 }

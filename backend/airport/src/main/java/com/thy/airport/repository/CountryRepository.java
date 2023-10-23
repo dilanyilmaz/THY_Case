@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CountryRepository extends CrudRepository<Country,Long> {
+public interface CountryRepository extends CrudRepository<Country,Integer> {
 
 
 }

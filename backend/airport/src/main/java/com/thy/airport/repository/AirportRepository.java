@@ -11,7 +11,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface AirportRepository extends CrudRepository<Airport,Long> {
+public interface AirportRepository extends CrudRepository<Airport,Integer> {
   @Query(nativeQuery = true,value =
       "SELECT COUNTRY.NAME as \"COUNTRY\",\n"
           + "CITY.NAME as \"CITY\",\n"
